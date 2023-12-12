@@ -1,0 +1,7 @@
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:23:13:ECU_SeedsGen	1
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:30:16:ECU_CheckKey	3
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:38:6:Security_ChangeState	3
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:51:9:ECU_Init	2
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:56:9:ECU_ReadDataByID_RequestService	4
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:74:9:ECU_WriteDataByID_RequestService	8
+../Diagnostic_Services/ECU_Diagnostic/ECU_Diagnostic.c:105:9:ECU_SecurityAccess_RequestService	9

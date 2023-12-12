@@ -1,0 +1,20 @@
+22:37:13 **** Incremental Build of configuration Debug for project Lab04_ActuatorECU ****
+make -j16 all 
+arm-none-eabi-gcc "../isotp-c/isotp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab04_ActuatorECU/CanTP_Handler" -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab04_ActuatorECU/Diagnostic_Services" -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab04_ActuatorECU/isotp-c" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"isotp-c/isotp.d" -MT"isotp-c/isotp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "isotp-c/isotp.o"
+arm-none-eabi-gcc -o "Lab04_ActuatorECU.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\nhakh\Desktop\Document\STM\CE437\Lab04_ActuatorECU\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab04_ActuatorECU.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab04_ActuatorECU.elf
+ 
+arm-none-eabi-size   Lab04_ActuatorECU.elf 
+arm-none-eabi-objdump -h -S  Lab04_ActuatorECU.elf  > "Lab04_ActuatorECU.list"
+arm-none-eabi-objcopy  -O binary  Lab04_ActuatorECU.elf  "Lab04_ActuatorECU.bin"
+   text	   data	    bss	    dec	    hex	filename
+  21276	    116	   2300	  23692	   5c8c	Lab04_ActuatorECU.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab04_ActuatorECU.bin
+ 
+Finished building: Lab04_ActuatorECU.list
+ 
+
+22:37:16 Build Finished. 0 errors, 0 warnings. (took 2s.858ms)
+

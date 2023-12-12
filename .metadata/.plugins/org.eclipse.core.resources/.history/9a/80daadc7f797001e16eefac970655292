@@ -1,0 +1,18 @@
+/*
+ * CANCom.c
+ *
+ *  Created on: Dec 11, 2023
+ *      Author: nhakh
+ */
+
+#include "main.h"
+#include "CANCom.h"
+
+extern CAN_HandleTypeDef hcan;
+
+
+void CANCom_Init();
+
+void CANCom_Transmit(uint8_t * pData,uint8_t len);
+
+void CANCom_ReceiveCallback();
