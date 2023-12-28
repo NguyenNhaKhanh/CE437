@@ -1,0 +1,8 @@
+../Control/Speed_Control/Speed_Control.c:16:13:SpeedControl_Thread	40	static
+../Control/Speed_Control/Speed_Control.c:34:6:SpeedControl_Init	24	static
+../Control/Speed_Control/Speed_Control.c:46:6:SpeedControl_setInterval	16	static
+../Control/Speed_Control/Speed_Control.c:51:6:SpeedControl_Start	16	static
+../Control/Speed_Control/Speed_Control.c:55:6:SpeedControl_Stop	16	static
+../Control/Speed_Control/Speed_Control.c:60:6:SpeedControl_setSpeed	16	static
+../Control/Speed_Control/Speed_Control.c:66:7:SpeedControl_getSpeed	16	static
+../Control/Speed_Control/Speed_Control.c:69:6:SpeedControl_setTuning	32	static

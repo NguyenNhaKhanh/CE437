@@ -59,15 +59,18 @@ uint8_t CanTP_Receive(uint8_t *pData, uint16_t *len, uint32_t timeout) {
 	}
 	uint8_t status = 0;
 	if (ISOTP_RECEIVE_STATUS_FULL == isoTP.receive_status) {
-		char PrintBuf[20] = "";
-		uint16_t printSize = 0;
-		printSize = sprintf(PrintBuf, "%x %x %x\r\n", isoTP.receive_buffer[0],
-				isoTP.receive_buffer[1], isoTP.receive_buffer[2]);
-		HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
+//		char PrintBuf[20] = "";
+//		uint16_t printSize = 0;
+//		printSize = sprintf(PrintBuf, "%x %x %x\r\n", isoTP.receive_buffer[0],
+//				isoTP.receive_buffer[1], isoTP.receive_buffer[2]);
+//		HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
 		status = isotp_receive(&isoTP, pData, *len, len);
 		uint16_t copylen = isoTP.receive_size;
 		if (copylen > *len) {
 			copylen = *len;
+		}
+		for (int i = 0;i < copylen;i++) {
+			pData[i] = isoTP.receive_buffer[i];
 		}
 //		memcpy(pData, isoTP.receive_buffer, copylen);
 //		if (status != ISOTP_RET_OK) {

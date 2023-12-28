@@ -1,0 +1,4 @@
+../Control/PID_Control/PID_Control.c:10:6:PID_tunning	24	static
+../Control/PID_Control/PID_Control.c:19:7:PID_calc	32	static
+../Control/PID_Control/PID_Control.c:28:6:PID_ClearErr	16	static
+../Control/PID_Control/PID_Control.c:33:6:PID_setSetPoint	16	static

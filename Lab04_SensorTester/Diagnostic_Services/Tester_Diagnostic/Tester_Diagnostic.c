@@ -11,6 +11,7 @@
 #include "CanTP.h"
 #include <stdio.h>
 
+extern UART_HandleTypeDef huart1;
 
 uint8_t Tester_Init() {
 	HAL_ERR(CanTP_Init(SEND_ID, RECV_ID));
@@ -97,21 +98,30 @@ uint8_t Tester_SecurityAccess_RequestService() {
 	memcpy(SendKeysBuff + 2, Keys, 16);
 
 	HAL_ERR(CanTP_Transmit(SendKeysBuff, 18));
-//	char PrintBuf[20] = "";
-//	uint16_t printSize = 0;
-//	printSize = sprintf(PrintBuf, "Send successful\r\n");
+	char PrintBuf[20] = "";
+	uint16_t printSize = 0;
+//	printSize = sprintf(PrintBuf, "SSS\r\n");
 //	HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
 
 	uint8_t RespCheckKeysBuff[3];
 	uint8_t RespCheckKeyLen = 3;
 	HAL_ERR(CanTP_Receive(RespCheckKeysBuff, RespCheckKeyLen, 1500));
-	HAL_GPIO_WritePin(LEDG_GPIO_Port, LEDG_Pin, 1);
+//	HAL_GPIO_WritePin(LEDG_GPIO_Port, LEDG_Pin, 1);
+//	char PrintBuf[20] = "";
+//	uint16_t printSize = 0;
+	printSize = sprintf(PrintBuf, "SAS\r\n");
+	HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
+//	printf("Security Access Success\r\n");
 //	HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
 	RespSID = RespCheckKeysBuff[0];
 	RespSF = RespCheckKeysBuff[1];
 	if (RespSID == Get_Positive_RespID(SecurityAccess_ReqSID)
 			&& RespSF == SecurityAccess_SendKeyID) {
 //		HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
+//		char PrintBuf[20] = "";
+//		uint16_t printSize = 0;
+//		printSize = sprintf(PrintBuf, "SAS\r\n");
+//		HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
 		printf("Security Access Success\r\n");
 		HAL_GPIO_WritePin(LEDG_GPIO_Port, LEDG_Pin, 1);
 		return HAL_OK;

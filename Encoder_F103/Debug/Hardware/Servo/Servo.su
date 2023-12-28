@@ -1,0 +1,5 @@
+../Hardware/Servo/Servo.c:9:6:Servo_Init	24	static
+../Hardware/Servo/Servo.c:17:19:Servo_Start	16	static
+../Hardware/Servo/Servo.c:22:14:Angle2PWM	16	static
+../Hardware/Servo/Servo.c:27:6:Servo_setPWM	16	static
+../Hardware/Servo/Servo.c:31:6:Servo_setAngle	16	static

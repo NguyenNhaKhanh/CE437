@@ -1,0 +1,2 @@
+../Hardware/GPIO/GPIOHandler.c:7:6:GPIO_TogglePin	16	static
+../Hardware/GPIO/GPIOHandler.c:12:6:GPIO_WritePin	24	static

@@ -30,7 +30,8 @@ uint8_t CanTP_Init(uint16_t SendId, uint16_t RecvId) {
 
 	HAL_ERR(HAL_CAN_Start(&hcan));
 //	uint8_t status = 0;
-	isotp_init_link(&isoTP, SendId, SendBuffer, CANTP_BUFF_SIZE, RecvBuffer, CANTP_BUFF_SIZE);
+	isotp_init_link(&isoTP, SendId, SendBuffer, CANTP_BUFF_SIZE, RecvBuffer,
+			CANTP_BUFF_SIZE);
 	return HAL_OK;
 }
 
@@ -51,15 +52,20 @@ uint8_t CanTP_Receive(uint8_t *pData, uint16_t *len, uint32_t timeout) {
 	while ((HAL_GetTick() - startTime) < timeout) {
 		isotp_poll(&isoTP);
 		if (isoTP.receive_status == ISOTP_RECEIVE_STATUS_FULL) {
-//			HAL_GPIO_TogglePin(LEDIn_GPIO_Port, LEDIn_Pin);
+			HAL_GPIO_TogglePin(LEDIn_GPIO_Port, LEDIn_Pin);
 			break;
 		}
 	}
 	uint8_t status = 0;
 	if (ISOTP_RECEIVE_STATUS_FULL == isoTP.receive_status) {
-		status = isotp_receive(&isoTP, pData,*len , len);
-		if (status != ISOTP_RET_OK) {
-			return HAL_ERROR;
+//		HAL_GPIO_TogglePin(LEDG_GPIO_Port, LEDG_Pin);
+//		status = isotp_receive(&isoTP, pData, *len, len);
+		uint16_t copylen = isoTP.receive_size;
+		if (copylen > *len) {
+			copylen = *len;
+		}
+		for (int i = 0; i < copylen; i++) {
+			pData[i] = isoTP.receive_buffer[i];
 		}
 		return HAL_OK;
 	}
@@ -69,7 +75,7 @@ uint8_t CanTP_Receive(uint8_t *pData, uint16_t *len, uint32_t timeout) {
 
 void CanTP_RcvCallback() {
 	CAN_RxHeaderTypeDef RxHeader;
-	uint8_t RxData[8] = {0};
+	uint8_t RxData[8] = { 0 };
 	HAL_CAN_GetRxMessage(&hcan, CAN_FILTER_FIFO0, &RxHeader, RxData);
 	isotp_on_can_message(&isoTP, RxData, RxHeader.DLC);
 }

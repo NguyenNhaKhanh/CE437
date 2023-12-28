@@ -10,19 +10,16 @@
 
 extern CAN_HandleTypeDef hcan;
 extern uint8_t SendBuf[8];
-extern uint8_t MsgCounter = 0;
+extern uint8_t MsgCounter;
 
 void CANCom_Init() {
-	CAN_FilterTypeDef RxFilter = {
-			.FilterActivation = CAN_FILTER_ENABLE,
-			.FilterBank = 0,
-			.FilterFIFOAssignment = CAN_RX_FIFO0,
-			.FilterIdHigh = RX_ID << 5,
-			.FilterIdLow = 0,
-			.FilterMaskIdHigh = 0,
-			.FilterMaskIdLow = 0,
-			.FilterMode = CAN_FILTERMODE_IDMASK,
-			.FilterScale = CAN_FILTERSCALE_16BIT, };
+	CAN_FilterTypeDef RxFilter = {0 };
+	RxFilter.FilterActivation = CAN_FILTER_ENABLE;
+	RxFilter.FilterBank = 0;
+	RxFilter.FilterFIFOAssignment = CAN_RX_FIFO0;
+	RxFilter.FilterIdHigh = RX_ID << 5;
+	RxFilter.FilterMode = CAN_FILTERMODE_IDLIST;
+	RxFilter.FilterScale = CAN_FILTERSCALE_16BIT;
 	HAL_CAN_ConfigFilter(&hcan, &RxFilter);
 	HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
 	HAL_CAN_Start(&hcan);
@@ -39,7 +36,6 @@ void CANCom_Transmit(uint8_t *pData, uint8_t len) {
 }
 
 void Sensor_RecvHandle(uint8_t *Buf,uint8_t Len) {
-	static MsgCounter = 0;
 	int crc_check = calc_SAE_J1850(Buf, 7);
 	if (crc_check == (int)Buf[7]) {
 		uint8_t RespBuf[8] = {0};

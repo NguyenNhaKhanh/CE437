@@ -124,8 +124,8 @@ uint8_t ECU_SecurityAccess_RequestService(uint8_t *pData, uint16_t Len) {
 	uint8_t RecvKeyLen = 18;
 	char PrintBuf[20] = "";
 	uint16_t printSize = 0;
-	printSize = sprintf(PrintBuf, "SSS\r\n");
-	HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
+//	printSize = sprintf(PrintBuf, "SSS\r\n");
+//	HAL_UART_Transmit(&huart1, PrintBuf, printSize, 200);
 	HAL_GPIO_WritePin(LEDG_GPIO_Port, LEDG_Pin, 1);
 	uint8_t Keys[16] = { 0 };
 	uint8_t RecvKey[16] = { 0 };

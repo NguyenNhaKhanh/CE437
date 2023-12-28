@@ -67,7 +67,7 @@ static int isotp_send_flow_control(IsoTpLink* link, uint8_t flow_status, uint8_t
 
     /* send message */
 #ifdef ISO_TP_FRAME_PADDING
-    (void) memset(message.as.flow_control.reserve, 0, sizeof(message.as.flow_control.reserve));
+    (void) memset(message.as.flow_control.reserve, 0x55, sizeof(message.as.flow_control.reserve));
     ret = isotp_user_send_can(link->send_arbitration_id, message.as.data_array.ptr, sizeof(message));
 #else    
     ret = isotp_user_send_can(link->send_arbitration_id,
@@ -148,7 +148,7 @@ static int isotp_send_consecutive_frame(IsoTpLink* link) {
 
     /* send message */
 #ifdef ISO_TP_FRAME_PADDING
-    (void) memset(message.as.consecutive_frame.data + data_length, 0, sizeof(message.as.consecutive_frame.data) - data_length);
+    (void) memset(message.as.consecutive_frame.data + data_length, 0x55, sizeof(message.as.consecutive_frame.data) - data_length);
     ret = isotp_user_send_can(link->send_arbitration_id, message.as.data_array.ptr, sizeof(message));
 #else
     ret = isotp_user_send_can(link->send_arbitration_id,

@@ -48,6 +48,8 @@ UART_HandleTypeDef huart1;
 /* USER CODE BEGIN PV */
 
 int crc_SendData;
+extern uint8_t SendBuf[8];
+extern uint8_t MsgCounter = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -253,6 +255,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
+	HAL_GPIO_TogglePin(LEDB_GPIO_Port, LEDB_Pin);
 	CANCom_ReceiveCallback();
 }
 /* USER CODE END 4 */

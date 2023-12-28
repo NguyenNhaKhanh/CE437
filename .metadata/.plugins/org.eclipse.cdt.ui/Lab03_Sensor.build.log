@@ -1,44 +1,10 @@
-16:22:52 **** Incremental Build of configuration Debug for project Lab03_Sensor ****
+14:23:22 **** Incremental Build of configuration Debug for project Lab03_Sensor ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab03_Sensor/CANCom" -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab03_Sensor/utils" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../CANCom/CANCom.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab03_Sensor/CANCom" -I"C:/Users/nhakh/Desktop/Document/STM/CE437/Lab03_Sensor/utils" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"CANCom/CANCom.d" -MT"CANCom/CANCom.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "CANCom/CANCom.o"
-../CANCom/CANCom.c:13:16: warning: 'MsgCounter' initialized and declared 'extern'
-   13 | extern uint8_t MsgCounter = 0;
-      |                ^~~~~~~~~~
-../CANCom/CANCom.c: In function 'CANCom_Transmit':
-../CANCom/CANCom.c:38:55: warning: passing argument 4 of 'HAL_CAN_AddTxMessage' from incompatible pointer type [-Wincompatible-pointer-types]
-   38 |         HAL_CAN_AddTxMessage(&hcan, &TxHeader, pData, &Mailbox);
-      |                                                       ^~~~~~~~
-      |                                                       |
-      |                                                       uint8_t * {aka unsigned char *}
-In file included from ../Core/Inc/stm32f1xx_hal_conf.h:258,
-                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../CANCom/CANCom.c:8:
-../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h:685:73: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-  685 |                                        const uint8_t aData[], uint32_t *pTxMailbox);
-      |                                                               ~~~~~~~~~~^~~~~~~~~~
-../CANCom/CANCom.c: In function 'Sensor_RecvHandle':
-../CANCom/CANCom.c:42:16: warning: type defaults to 'int' in declaration of 'MsgCounter' [-Wimplicit-int]
-   42 |         static MsgCounter = 0;
-      |                ^~~~~~~~~~
-../CANCom/CANCom.c:43:25: warning: implicit declaration of function 'calc_SAE_J1850' [-Wimplicit-function-declaration]
-   43 |         int crc_check = calc_SAE_J1850(Buf, 7);
-      |                         ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "Lab03_Sensor.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\nhakh\Desktop\Document\STM\CE437\Lab03_Sensor\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab03_Sensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab03_Sensor.elf
- 
 arm-none-eabi-size   Lab03_Sensor.elf 
-arm-none-eabi-objdump -h -S  Lab03_Sensor.elf  > "Lab03_Sensor.list"
-arm-none-eabi-objcopy  -O binary  Lab03_Sensor.elf  "Lab03_Sensor.bin"
    text	   data	    bss	    dec	    hex	filename
-   9456	     20	   1684	  11160	   2b98	Lab03_Sensor.elf
+   9436	     20	   1684	  11140	   2b84	Lab03_Sensor.elf
 Finished building: default.size.stdout
  
-Finished building: Lab03_Sensor.bin
- 
-Finished building: Lab03_Sensor.list
- 
 
-16:22:55 Build Finished. 0 errors, 4 warnings. (took 2s.310ms)
+14:23:23 Build Finished. 0 errors, 0 warnings. (took 542ms)
 

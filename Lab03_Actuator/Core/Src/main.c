@@ -33,18 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define SENSOR_ID			0x0A2
-#define ACTUATOR_ID			0x012
 
-#define SENSOR_NODE			1
-
-#if SENSOR_NODE
-#define TX_ID				ACTUATOR_ID
-#define	RX_ID				SENSOR_ID
-#elif	ACTUATOR_NODE
-#define TX_ID				SENSOR_ID
-#define	RX_ID				ACTUATOR_ID
-#endif
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,7 +47,7 @@ CAN_HandleTypeDef hcan;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-uint8_t MsgCounter = 0;
+uint8_t MsgCounter;
 uint8_t SendBuf[8];
 /* USER CODE END PV */
 
@@ -109,7 +98,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	CANCom_Init();
 //	uint8_t val1 = 0,val2 = 0;
-	SendBuf[8] = {0};
 	int crc_val = 0;
 
   /* USER CODE END 2 */
@@ -121,6 +109,7 @@ int main(void)
 		SendBuf[1] = rand() % 255;
 		SendBuf[2] = SendBuf[0] + SendBuf[1];
 		crc_val = calc_SAE_J1850(SendBuf, 7);
+		SendBuf[7] = crc_val;
 		CANCom_Transmit(SendBuf, 8);
 		HAL_Delay(50);
 
@@ -272,6 +261,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
+	HAL_GPIO_TogglePin(LEDB_GPIO_Port, LEDB_Pin);
 	CANCom_ReceiveCallback();
 }
 /* USER CODE END 4 */

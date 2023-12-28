@@ -1,0 +1,5 @@
+../Hardware/Servo/Servo.c:9:6:Servo_Init	1
+../Hardware/Servo/Servo.c:17:19:Servo_Start	1
+../Hardware/Servo/Servo.c:22:14:Angle2PWM	1
+../Hardware/Servo/Servo.c:27:6:Servo_setPWM	4
+../Hardware/Servo/Servo.c:31:6:Servo_setAngle	3

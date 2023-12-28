@@ -1,0 +1,13 @@
+../Core/Src/main.c:68:1:__io_putchar	1
+../Core/Src/main.c:106:5:main	2
+../Core/Src/main.c:227:6:SystemClock_Config	3
+../Core/Src/main.c:267:13:MX_CAN_Init	2
+../Core/Src/main.c:304:13:MX_TIM1_Init	8
+../Core/Src/main.c:383:13:MX_TIM2_Init	3
+../Core/Src/main.c:432:13:MX_TIM4_Init	6
+../Core/Src/main.c:491:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:524:13:MX_GPIO_Init	1
+../Core/Src/main.c:575:6:HAL_CAN_RxFifo0FullCallback	4
+../Core/Src/main.c:594:6:StartDefaultTask	2
+../Core/Src/main.c:633:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:650:6:Error_Handler	1

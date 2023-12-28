@@ -1,0 +1,12 @@
+../Hardware/Encoder/Encoder.c:16:6:Encoder_Thread	2
+../Hardware/Encoder/Encoder.c:38:6:Encoder_Init	1
+../Hardware/Encoder/Encoder.c:51:6:Encoder_Start	1
+../Hardware/Encoder/Encoder.c:62:6:Encoder_Stop	1
+../Hardware/Encoder/Encoder.c:71:6:Encoder_Handle	2
+../Hardware/Encoder/Encoder.c:86:10:Encoder_GetTotalCount	1
+../Hardware/Encoder/Encoder.c:90:6:Encoder_ClearTotalCount	1
+../Hardware/Encoder/Encoder.c:95:7:Encoder_GetSpeed_MPS	1
+../Hardware/Encoder/Encoder.c:101:7:Encoder_GetSpeed_PPS	1
+../Hardware/Encoder/Encoder.c:107:7:Encoder_GetSpeed_RPS	1
+../Hardware/Encoder/Encoder.c:112:7:Encoder_GetRotationCount	1
+../Hardware/Encoder/Encoder.c:117:10:Encoder_GetCount	1

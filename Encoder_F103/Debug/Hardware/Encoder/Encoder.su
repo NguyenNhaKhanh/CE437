@@ -1,0 +1,12 @@
+../Hardware/Encoder/Encoder.c:16:6:Encoder_Thread	56	static
+../Hardware/Encoder/Encoder.c:38:6:Encoder_Init	24	static
+../Hardware/Encoder/Encoder.c:51:6:Encoder_Start	16	static
+../Hardware/Encoder/Encoder.c:62:6:Encoder_Stop	16	static
+../Hardware/Encoder/Encoder.c:71:6:Encoder_Handle	24	static
+../Hardware/Encoder/Encoder.c:86:10:Encoder_GetTotalCount	16	static
+../Hardware/Encoder/Encoder.c:90:6:Encoder_ClearTotalCount	16	static
+../Hardware/Encoder/Encoder.c:95:7:Encoder_GetSpeed_MPS	24	static
+../Hardware/Encoder/Encoder.c:101:7:Encoder_GetSpeed_PPS	24	static
+../Hardware/Encoder/Encoder.c:107:7:Encoder_GetSpeed_RPS	16	static
+../Hardware/Encoder/Encoder.c:112:7:Encoder_GetRotationCount	16	static
+../Hardware/Encoder/Encoder.c:117:10:Encoder_GetCount	16	static

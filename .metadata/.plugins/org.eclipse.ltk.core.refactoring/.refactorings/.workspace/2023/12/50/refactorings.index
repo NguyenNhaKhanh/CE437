@@ -1,2 +1,5 @@
 1702277047489	Delete resource 'Lab03_Sensor/CAN_Handler'
 1702277053139	Delete resource 'Lab03_Sensor/Diagnostic_Services'
+1702535272512	Delete resource 'Sensor_Node/VL53L0X'
+1702535640286	Delete resource 'Sensor_Node/VL53LXX'
+1702536635195	Delete 3 resources
