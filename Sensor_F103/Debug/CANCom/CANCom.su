@@ -1,5 +1,5 @@
-../CANCom/CANCom.c:15:6:CANCom_Init	48	static
-../CANCom/CANCom.c:28:6:CANCom_Transmit	48	static
-../CANCom/CANCom.c:38:6:Sensor_RecvHandle	24	static
+../CANCom/CANCom.c:15:6:CANCom_Init	56	static
+../CANCom/CANCom.c:29:6:CANCom_Transmit	48	static
+../CANCom/CANCom.c:39:6:Sensor_RecvHandle	24	static
 ../CANCom/CANCom.c:50:6:Actuator_RecvHandle	16	static
-../CANCom/CANCom.c:61:6:CANCom_ReceiveCallback	48	static
+../CANCom/CANCom.c:60:6:CANCom_ReceiveCallback	48	static

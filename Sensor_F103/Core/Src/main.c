@@ -32,8 +32,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define VL53L1X_ADDRESS_0 		0x33
-#define VL53L1X_ADDRESS_1		0x32
+#define VL53L0X_ADDRESS_0 		0x33
+#define VL53L0X_ADDRESS_1		0x32
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -102,16 +102,17 @@ int main(void) {
 	/* USER CODE BEGIN 2 */
 
 
+	GPIO_WritePin(Xshut0, 0);
 	GPIO_WritePin(Xshut1, 0);
 
 	VL53L0X_Error err = VL53L0X_ERROR_NONE;
-	err = Vl53l0x_Init(&VL53LXX_Handler_0, &hi2c1, VL53L1X_ADDRESS_0, Xshut0);
+	err = Vl53l0x_Init(&VL53LXX_Handler_0, &hi2c1, VL53L0X_ADDRESS_0, Xshut0);
 	if (err != VL53L0X_ERROR_NONE) {
 		HAL_GPIO_WritePin(LEDG_GPIO_Port, LEDG_Pin, 1);
 	}
 
-	GPIO_WritePin(Xshut0, 1);
-	err = Vl53l0x_Init(&VL53LXX_Handler_1, &hi2c1, VL53L1X_ADDRESS_1, Xshut1);
+//	GPIO_WritePin(Xshut0, 1);
+	err = Vl53l0x_Init(&VL53LXX_Handler_1, &hi2c1, VL53L0X_ADDRESS_1, Xshut1);
 	if (err != VL53L0X_ERROR_NONE) {
 		HAL_GPIO_WritePin(LEDR_GPIO_Port, LEDR_Pin, 1);
 	}
@@ -137,14 +138,14 @@ int main(void) {
 	while (1) {
 		Distance_0 = Vl53l0x_ReadMeasure(&VL53LXX_Handler_0);
 		Distance_1 = Vl53l0x_ReadMeasure(&VL53LXX_Handler_1);
-		if (Distance_0 < 100 || Distance_1 < 100) {
-			CanMsgLen = sprintf(Can_msg, "0:%d;1:%d", Distance_0,
+		if ((Distance_0 >= 0 && Distance_0 < 100) || (Distance_1 >= 0 && Distance_1 < 100)) {
+			CanMsgLen = sprintf(Can_msg, "%d;%d", Distance_0,
 					Distance_1);
 			CANCom_Transmit(Can_msg, CanMsgLen);
 		}
-		UartMsgLen = sprintf(Uart_msg, "%d;%d\r\n", Distance_0, Distance_1);
-		HAL_UART_Transmit(&huart1, Uart_msg, UartMsgLen, 300);
-		HAL_Delay(100);
+//		UartMsgLen = sprintf(Uart_msg, "%d;%d\r\n", Distance_0, Distance_1);
+//		HAL_UART_Transmit(&huart1, Uart_msg, UartMsgLen, 300);
+		HAL_Delay(1000);
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
